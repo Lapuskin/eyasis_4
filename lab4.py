@@ -9,10 +9,9 @@ from tkinter import ttk
 from tkinter import *
 
 from deep_translator import GoogleTranslator
+
 db = sqlite3.connect('db.sqlite3')
 cursor = db.cursor()
-
-nltk.download('averaged_perceptron_tagger')
 
 nlp = spacy.load('de_core_news_md')
 
@@ -33,6 +32,9 @@ grammar = r"""
 
 
 def draw_tree(text):
+    nltk.download('averaged_perceptron_tagger_eng')
+
+
     if text != '':
         doc = nltk.word_tokenize(text)
         doc = nltk.pos_tag(doc)
